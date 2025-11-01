@@ -1,28 +1,22 @@
 #include <stdio.h>
 
 // Desafio Super Trunfo - Países
-// Tema 2 - Comparação das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de comparação de cartas de cidades. 
-// Siga os comentários para implementar cada parte do desafio.
+// Tema 1 - Cadastro das cartas
+// Objetivo: No nível novato você deve criar as cartas representando as cidades utilizando scanf para entrada de dados e printf para exibir as informações.
+/* supertrunfo - os usuários tem que cadastrar 2 cartas, com as seguintes informações: Estado: Uma letra de 'A' a 'H', em char; Código da Carta: letra do estado + número de 01 a 04, char[]
+  Nome da Cidade: nome, em char[]; População: número de habitantes, em int; Área: A área da cidade em km2, em float; PIB, em float; Pontos Turísticos: qtde, em int
+  No nivel aventureiro: sistema calcula a Densidade Populacional e o PIB per Capita com base nos dados inseridos.
+*/
 
 int main() {
-    // Definição das variáveis para armazenar as propriedades das cidades
-    // Você pode utilizar o código do primeiro desafio
+
+  // Área para definição das variáveis para armazenar as propriedades das cidades
 char estado;
 char nomecid[20];
 int pontostur, codcarta, populacao;
 float areakm, pib, densid, percapita;
-    
-    // Cadastro das Cartas:
-    // Implemente a lógica para solicitar ao usuário que insira os dados das cidades
-    // utilizando a função scanf para capturar as entradas.
-    // utilize o código do primeiro desafio
 
-    // Exemplo:
-    // printf("Digite o código da cidade: ");
-    // scanf("%s", codigo);
-    // 
-    // (Repita para cada propriedade)
+  // Área para entrada de dados
 printf("Bem vindo ao Super Trunfo!\n");
 printf("Antes de começar a jogar, vamos cadastrar suas cartas. \n");
   
@@ -73,7 +67,7 @@ printf("\n Pronto para criar sua segunda carta?\n");
 
 char estado2;
 char nomecid2[20];
-int pontostur2, codcarta2, populacao2;
+int pontostur2, codcarta2, populacao2, atributo;
 float areakm2, pib2, densid2, percapita2;
   
     printf("Qual nome da segunda cidade? - por favor, não use espaços: \n");
@@ -108,7 +102,7 @@ float areakm2, pib2, densid2, percapita2;
 
   printf("A segunda carta foi cadastrada com sucesso! Confira abaixo as informações da %s: \n", nomecid2);
       printf("CARTA 2;");
-      printf(" Código da Carta: %c0%d \n", estado2, codcarta2);
+      printf("Código da Carta: %c0%d \n", estado2, codcarta2);
       printf("Estado: %c \n", estado2);
       printf("Nome da Cidade: %s \n", nomecid2);
       printf("População: %d \n", populacao2);
@@ -117,32 +111,68 @@ float areakm2, pib2, densid2, percapita2;
       printf("PIB: %.2f milhões de reais \n", pib2);
       printf("O PIB per capita é = R$ %.2f/habitante \n", percapita2);
       printf("Número de Pontos Turísticos: %d \n", pontostur2);
+
+printf("Tudo pronto para você começar a jogar!\n");
+printf("1 - População\n");
+printf("2 - Área\n");
+printf("3 - PIB\n");
+printf("4 - Número de pontos turísticos\n");
+printf("5 - Densidade demográfica\n");
+printf("Escolha pelo número qual atributo das cartas vão competir: \n");
+scanf("%d", &atributo);
+
+switch(atributo){
+    case 1:
+        if(populacao>populacao2){
+            printf("Batalha entre as cartas. A carta %c vence!\n", nomecid);
+            printf("População da carta %s: %d habitantes\n", nomecid, populacao);
+            printf("População da carta %s: %d habitantes\n", nomecid2,populacao2);
+        } else {
+            printf("Batalha entre as cartas. A carta %c vence!\n", nomecid2);
+        }
+    break;
+    case 2:
+        if(pib>pib2){
+            printf("Batalha entre as cartas. A carta %c vence!\n", nomecid);
+           printf("PIB da carta %s: R$ %.2f \n", nomecid, pib);
+            printf("PIB da carta %s: R$ %.2f \n", nomecid2,pib2); 
+        } else {
+            printf("Batalha entre as cartas. A carta %c vence!\n", nomecid2);
+        }
+    break;
+    case 3:
+        if(areakm>areakm2){
+            printf("Batalha entre as cartas. A carta %c vence!\n", nomecid);
+            printf("Area KM da carta %s: %.2f km²\n", nomecid, areakm);
+            printf("Area KM da carta %s: %.2f km²\n", nomecid2, areakm2);
+        } else {
+            printf("Batalha entre as cartas. A carta %c vence!\n", nomecid2);
+        }
+    break;
+    case 4:
+        if(pontostur>pontostur2){
+            printf("Batalha entre as cartas. A carta %c vence!\n", nomecid);
+            printf("Número de pontos turísticos da carta %s: %d pontos\n", nomecid, pontostur);
+            printf("Número de pontos turísticos da carta %s: %d pontos\n", nomecid2,pontostur2);
+        } else {
+            printf("Batalha entre as cartas. A carta %c vence!\n", nomecid2);
+        }
+    break;
+    case 5:
+        if (densid<densid2){
+        printf("Batalha entre as cartas. A carta %c vence!\n", nomecid);
+        } else {
+        printf("Batalha entre as cartas. A carta %c vence!\n", nomecid2);
+        printf("Carta %c0%d - Densidade populacional: %.2f habitantes/km²\n", estado, codcarta, densid);
+        printf("Carta %c0%d - Densidade populacional: %.2f habitantes/km²\n", estado2, codcarta2, densid2);
+        }
+    break;
     
-    // Comparação de Cartas:
-    // Desenvolva a lógica de comparação entre duas cartas.
-    // Utilize estruturas de decisão como if, if-else para comparar atributos como população, área, PIB, etc.
-
-    // Exemplo:
-    // if (populacaoA > populacaoB) {
-    //     printf("Cidade 1 tem maior população.\n");
-    // } else {
-    //     printf("Cidade 2 tem maior população.\n");
-    // }
-printf("Tudo pronto para você começar a jogar!");
-if (densid<densid2){
-    printf("Batalha entre as cartas. A carta %c vence!\n", nomecid);
-} else {
-    printf("Batalha entre as cartas. A carta %c vence!\n", nomecid2);
-}
-    // Exibição dos Resultados:
-    // Após realizar as comparações, exiba os resultados para o usuário.
-    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
-
-    // Exemplo:
-    // printf("A cidade vencedora é: %s\n", cidadeVencedora);
-printf("Carta %c0%d - Densidade populacional: %.2f habitantes/km²\n", estado, codcarta, densid);
-printf("Carta %c0%d - Densidade populacional: %.2f habitantes/km²\n", estado2, codcarta2, densid2);
+    default:
+    printf("Atributo inválido. Digite novamente.\n");
+    }
 
 printf("Obrigada por jogar");
-    return 0;
+
+return 0;
 }
